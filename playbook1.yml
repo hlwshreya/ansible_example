@@ -1,0 +1,10 @@
+---
+- name: AWX example playbook
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Create temporary directory
+      file:
+        path: /tmp/mastery
+        state: directory
+
