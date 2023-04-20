@@ -1,0 +1,36 @@
+---
+- name: Apache server installed
+  hosts: all
+
+  tasks:
+    - name: latest apache version installed
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Latest firewalld version installed
+      yum:
+        name: firewalld
+        state: latest
+
+    - name: firewalld enabled and running
+      service:
+        name: firewalld
+        enabled: true
+        state: started
+
+    - name: firwalld permits http service
+      firewalld:
+        service: httpd
+        permanent: true
+        state: enabled
+        immediate: yes
+
+    - name: Apache enabled and running
+      service:
+        name: httpd
+        enabled: true
+        state: started
+
+
+
